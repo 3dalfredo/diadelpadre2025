@@ -3,118 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Dark: Día del Padre 2025</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Catálogo Día del Padre - Impresiones 3D</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://css.gg/css?=" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* --- Configuración General --- */
+        :root {
+            --color-primario: #1a237e; /* Azul marino oscuro */
+            --color-secundario: #ffd700; /* Dorado */
+            --color-fondo: #f4f6f9;
+            --color-texto: #333333;
+            --color-tarjeta: #ffffff;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
         }
-        .title-font {
-            font-family: 'Oswald', sans-serif;
+
+        /* --- Encabezado --- */
+        .hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(26, 35, 126, 0.8)), url('https://placehold.co/1200x600/1a237e/ffffff?text=Regalos+3D') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 60px 20px 50px 20px;
+        }
+        .hero h1 {
+            font-size: 2.8em;
+            margin: 0;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+            font-weight: 300;
+        }
+
+        /* --- Contenedor Principal y Títulos --- */
+        .container {
+            max-width: 1400px; /* Ancho extendido para 5 columnas */
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: var(--color-primario);
+            font-weight: 700;
+        }
+
+        /* --- Cuadrícula de Productos (Mobile-First) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 columna por defecto en móviles */
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: var(--color-tarjeta);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px; 
+            object-fit: contain;
+            padding: 10px;
+            background-color: #fdfdfd;
+        }
+        .product-card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--color-primario);
+            font-size: 1.2em;
+        }
+        .product-card p {
+            margin: 0;
+            line-height: 1.5;
+            flex-grow: 1;
+            font-size: 0.9em;
+        }
+
+        /* --- Sección de Contacto (Call to Action) --- */
+        .cta-section {
+            background-color: var(--color-primario);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+        .cta-section h2 {
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-secundario);
+            color: var(--color-primario);
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #ffeb3b;
+        }
+
+        /* --- Pie de Página --- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        /* --- Adaptación a Tablets (2 columnas) --- */
+        @media (min-width: 600px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* --- Adaptación a Escritorio (3 columnas) --- */
+        @media (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .product-card img {
+                height: 200px;
+            }
+            .product-card-content {
+                padding: 15px;
+            }
+            .product-card h3 {
+                font-size: 1.1em;
+            }
+            .product-card p {
+                font-size: 0.85em;
+            }
+        }
+        
+        /* --- Adaptación a Escritorios Grandes (5 columnas y tarjetas muy compactas) --- */
+        @media (min-width: 1400px) {
+            .product-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px; /* Reducir el espacio entre tarjetas */
+            }
+            .product-card img {
+                height: 150px; /* Altura muy reducida */
+            }
+            .product-card-content {
+                padding: 12px; /* Padding reducido */
+            }
+            .product-card h3 {
+                font-size: 1em; /* Título compacto */
+                margin-bottom: 8px;
+            }
+            .product-card p {
+                font-size: 0.8em; /* Descripción muy compacta */
+                line-height: 1.4;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body>
 
-    <div class="container mx-auto p-4 max-w-2xl">
+    <header class="hero">
+        <h1>Regalos para un Papá Único</h1>
+        <p>Catálogo Especial Día del Padre 2025 - Impresiones 3D</p>
+    </header>
 
-        <!-- Header -->
-        <header class="text-center my-12">
-            <h2 class="text-4xl uppercase tracking-widest text-amber-400 title-font">Día del Padre</h2>
-            <h1 class="text-5xl font-bold text-white title-font">Catálogo 2025</h1>
-            <p class="mt-4 text-gray-400 max-w-md mx-auto">Regalos únicos en 3D para el mejor papá del mundo. Totalmente personalizables.</p>
-        </header>
-
-        <!-- Product Feed -->
-        <div class="space-y-10">
-
-            <!-- Product Post: Trofeos -->
-            <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-700">
-                <div class="p-4 bg-gray-800/80 backdrop-blur-sm">
-                   <h3 class="text-2xl font-bold text-amber-400 title-font">🏆 Trofeos para un Campeón</h3>
-                </div>
-                <img src="images/Trofeo7.png" alt="Trofeo para el más hincha" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Trofeo "El Más Hincha"</h4>
-                    <p class="text-gray-300 text-base">El regalo ideal para el papá fanático. Personalizable con el escudo de su equipo y una dedicatoria grabada.</p>
-                </div>
-                 <img src="images/Trofeo1.png" alt="Trofeo Águila" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Trofeo "Águila"</h4>
-                    <p class="text-gray-300 text-base">Un diseño imponente para un papá N°1. La placa dorada es 100% personalizable con el mensaje que quieras.</p>
+    <main class="container">
+        <!-- CATEGORÍA: Trofeos -->
+        <h2 class="section-title" id="trofeos">🏆 Trofeos para Campeones</h2>
+        <div class="product-grid">
+            <!-- Trofeo 1 -->
+            <div class="product-card">
+                <img src="images/Trofeo 1.png" alt="Trofeo de Colo-Colo">
+                <div class="product-card-content">
+                    <h3>Trofeo Colo-Colo</h3>
+                    <p>Para el papá Albo de corazón. Todos nuestros trofeos incluyen una placa personalizable para que agregues un mensaje único.</p>
                 </div>
             </div>
-            
-            <!-- Product Post: Portarretratos -->
-            <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-700">
-                 <div class="p-4 bg-gray-800/80 backdrop-blur-sm">
-                   <h3 class="text-2xl font-bold text-amber-400 title-font">🖼️ Portarretratos con Emoción</h3>
-                </div>
-                <img src="images/Cuadro18.png" alt="Portarretrato Super Papá" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Portarretrato "Súper Papá"</h4>
-                    <p class="text-gray-300 text-base">¡Convierte a papá en el superhéroe que es! Pon su foto y personaliza el mensaje de la base.</p>
-                </div>
-                <img src="images/Cuadro9.png" alt="Portarretratos magnético" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Portarretratos Magnético</h4>
-                    <p class="text-gray-300 text-base">Un detalle perfecto para el refrigerador. Personalizable con el logo y texto que prefieras.</p>
+            <!-- Trofeo 2 -->
+            <div class="product-card">
+                <img src="images/Trofeo 2.png" alt="Trofeo de Cobreloa">
+                <div class="product-card-content">
+                    <h3>Trofeo Cobreloa</h3>
+                    <p>El regalo perfecto para el hincha Loíno. Demuéstrale que es el mejor papá con este trofeo personalizado.</p>
                 </div>
             </div>
-
-            <!-- Product Post: Bandejas -->
-            <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-700">
-                <div class="p-4 bg-gray-800/80 backdrop-blur-sm">
-                   <h3 class="text-2xl font-bold text-amber-400 title-font">🍽️ Bandejas para Regalonear</h3>
-                </div>
-                <img src="images/Bandeja-b1.jpg" alt="Bandeja de desayuno" class="w-full h-auto object-cover">
-                <div class="p-6">
-                    <h4 class="font-bold text-xl mb-2">Bandeja de Desayuno</h4>
-                    <p class="text-gray-300 text-base">Para empezar su día con una sorpresa. Diseño calado "Feliz Día Papá", personalizable en color.</p>
-                </div>
-                <img src="images/Bandeja-a1.png" alt="Bandeja Escudo de Equipo" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Bandeja Escudo de Equipo</h4>
-                    <p class="text-gray-300 text-base">La bandeja perfecta para el picoteo. Con la forma del escudo de su club. ¡Pide el tuyo!</p>
+            <!-- Trofeo 3 -->
+            <div class="product-card">
+                <img src="images/Trofeo 3.png" alt="Trofeo de Universidad Católica">
+                <div class="product-card-content">
+                    <h3>Trofeo U. Católica</h3>
+                    <p>Para el papá Cruzado. Un trofeo elegante que puede personalizarse con el texto que elijas en su base.</p>
                 </div>
             </div>
-
-            <!-- Product Post: Letreros -->
-            <div class="bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-700">
-                <div class="p-4 bg-gray-800/80 backdrop-blur-sm">
-                   <h3 class="text-2xl font-bold text-amber-400 title-font">📜 Letreros y Diseños Únicos</h3>
-                </div>
-                <img src="images/Cartel17.png" alt="Letrero vintage Best Father" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Letrero Vintage "Best Father"</h4>
-                    <p class="text-gray-300 text-base">Un cartel elegante tipo etiqueta de whiskey. Ideal para decorar su quincho, bar u oficina.</p>
-                </div>
-                <img src="images/Screenshot14.jpg" alt="Diseño motorista" class="w-full h-auto object-cover p-8">
-                <div class="p-6 pt-2">
-                    <h4 class="font-bold text-xl mb-2">Diseño Estilo Motorista</h4>
-                    <p class="text-gray-300 text-base">Para papás con espíritu rockero. Lo adaptamos como letrero, llavero o lo que se te ocurra.</p>
+            <!-- Trofeo 4 -->
+            <div class="product-card">
+                <img src="images/Trofeo 4.png" alt="Trofeo de Universidad de Chile">
+                <div class="product-card-content">
+                    <h3>Trofeo U. de Chile</h3>
+                    <p>Sorprende al papá hincha del Romántico Viajero. Un detalle que atesorará para siempre. Placa personalizable incluida.</p>
                 </div>
             </div>
-
+             <!-- Trofeo 5 -->
+            <div class="product-card">
+                <img src="images/Trofeo 5.png" alt="Trofeo de Barcelona S.C.">
+                <div class="product-card-content">
+                    <h3>Trofeo Barcelona S.C.</h3>
+                    <p>También tenemos trofeos de equipos internacionales para el papá fanático. Placa personalizable con el mensaje que quieras.</p>
+                </div>
+            </div>
+            <!-- Trofeo 6 -->
+            <div class="product-card">
+                <img src="images/Trofeo 6.png" alt="Trofeo de Audax Italiano">
+                <div class="product-card-content">
+                    <h3>Trofeo Audax Italiano</h3>
+                    <p>Un regalo especial para el hincha itálico. Reconócelo como el "Más Hincha" con este trofeo personalizado.</p>
+                </div>
+            </div>
+            <!-- Trofeo 7 -->
+            <div class="product-card">
+                <img src="images/Trofeo7.png" alt="Trofeo de Palestino">
+                <div class="product-card-content">
+                    <h3>Trofeo Palestino</h3>
+                    <p>Para el papá de corazón árabe. Un trofeo con el escudo del Tino-Tino y una placa para dedicarle un mensaje especial.</p>
+                </div>
+            </div>
+            <!-- Trofeo 8 -->
+            <div class="product-card">
+                <img src="images/Trofeo1.png" alt="Trofeo de Unión Española">
+                <div class="product-card-content">
+                    <h3>Trofeo Unión Española</h3>
+                    <p>El regalo ideal para el papá Hispano. Un trofeo imponente con el escudo de la Furia Roja. Placa personalizable.</p>
+                </div>
+            </div>
+            <!-- Trofeo 9 - Personalizado -->
+            <div class="product-card">
+                <img src="https://placehold.co/600x400/f4f6f9/1a237e?text=Tu+Equipo+Aquí" alt="Trofeo personalizado de cualquier equipo">
+                <div class="product-card-content">
+                    <h3>Trofeo de tu Equipo</h3>
+                    <p>¿No ves a tu equipo? ¡No te preocupes! Fabricamos trofeos personalizados del club que quieras. ¡Contáctanos y cuéntanos tu idea!</p>
+                </div>
+            </div>
         </div>
 
-        <!-- Call to Action -->
-        <footer class="text-center my-16 p-8 bg-gray-800 rounded-2xl shadow-xl border border-gray-700">
-            <h3 class="text-3xl font-bold text-white title-font">¿Te gustó algo?</h3>
-            <p class="mt-3 text-gray-300">¡Hablemos! Cotiza tu idea y creemos juntos el regalo perfecto.</p>
-            <a href="https://wa.me/56912345678?text=Hola!%20Vengo%20del%20catálogo%20del%20Día%20del%20Padre%20y%20me%20gustaría%20cotizar%20un%20regalo." 
-               target="_blank" 
-               class="mt-6 inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-110">
-                ✅ Cotizar por WhatsApp
-            </a>
-            <p class="mt-4 text-xs text-gray-500">Recuerda cambiar el número de teléfono en el código.</p>
-        </footer>
+        <!-- CATEGORÍA: Cuadros y Portarretratos -->
+        <h2 class="section-title" id="cuadros">🖼️ Portarretratos "Súper Papá"</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/Cuadro 18.png" alt="Imagen de un portarretratos de sobremesa con diseño de Superman">
+                <div class="product-card-content">
+                    <h3>Figura Súper Papá</h3>
+                    <p>Una figura decorativa y divertida para su escritorio. ¡Pon su cara y conviértelo en el superhéroe de la casa!</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/Cauadro 9.png" alt="Imagen de un portarretratos de pared con temática de Superman">
+                <div class="product-card-content">
+                    <h3>Marco de Fotos Súper Papá</h3>
+                    <p>Un diseño moderno para colgar en la pared o poner en el refrigerador. Un recuerdo diario de lo increíble que es.</p>
+                </div>
+            </div>
+        </div>
 
-    </div>
+        <!-- CATEGORÍA: Bandejas -->
+        <h2 class="section-title" id="bandejas">🍽️ Bandejas para Regalonear</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/Bandeja b1.png" alt="Imagen de una bandeja de desayuno que dice Feliz Día Papá">
+                <div class="product-card-content">
+                    <h3>Bandeja de Desayuno</h3>
+                    <p>Ideal para empezar su día con una sorpresa. Su diseño calado "Feliz Día Papá" la hace única y muy especial.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/bandeja.png" alt="Imagen de una bandeja para picoteo con forma de escudo de fútbol">
+                <div class="product-card-content">
+                    <h3>Bandeja de Picoteo</h3>
+                    <p>Para el papá futbolero, una bandeja con el escudo de su club. Perfecta para disfrutar de la previa o el partido.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CATEGORÍA: Carteles -->
+        <h2 class="section-title" id="carteles">✨ Carteles con Estilo</h2>
+        <div class="product-grid">
+            <!-- Cartel 1 -->
+            <div class="product-card">
+                <img src="images/Cartel 17.png" alt="Imagen de un cartel decorativo estilo etiqueta de whisky">
+                <div class="product-card-content">
+                    <h3>Cartel Estilo Vintage</h3>
+                    <p>Con un elegante diseño tipo etiqueta de whisky, para un papá de calidad premium. Perfecto para decorar su bar, quincho o rincón favorito.</p>
+                </div>
+            </div>
+            <!-- Cartel 2 -->
+            <div class="product-card">
+                <img src="images/Screenshot_14.png" alt="Imagen de un cartel decorativo con la frase El Mejor Papá del Mundo">
+                <div class="product-card-content">
+                    <h3>Cartel "Mejor Papá del Mundo"</h3>
+                    <p>Con una tipografía potente y un diseño tipo emblema de motorista. Para que no quede ninguna duda de quién es el número uno en el camino de la vida.</p>
+                </div>
+            </div>
+             <!-- Cartel 3 -->
+            <div class="product-card">
+                <img src="images/Cartel 13.png" alt="Cartel con mensaje cristiano y bigote">
+                <div class="product-card-content">
+                    <h3>Cartel "Papá, Nuestro Refugio"</h3>
+                    <p>Un regalo con un mensaje emotivo y de gratitud. Ideal para el papá que es el pilar y protector de la familia.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <section class="cta-section">
+        <h2>¿Listo para elegir el regalo perfecto?</h2>
+        <p>¡No lo dejes para última hora! Contáctame para personalizar tu pedido.</p>
+        <!-- IMPORTANTE: Reemplaza el +569XXXXXXXX con tu número de WhatsApp real -->
+        <a href="https://wa.me/+56995466513?text=Hola!%20Vengo%20del%20catálogo%20web%20y%20me%20interesa%20un%20producto%20para%20el%20Día%20del%20Padre." class="cta-button" target="_blank">Haz tu Pedido por WhatsApp</a>
+    </section>
+
+    <footer>
+        <!-- Reemplaza con tu información -->
+        <p><strong>Impresiones 3D_ALFREDO</strong></p>
+        <p>Hecho con ❤️ en Puente Alto, Santiago.</p>
+    </footer>
 
 </body>
 </html>
